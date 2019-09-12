@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 @Controller
 public class UserController {
 
@@ -21,6 +20,11 @@ public class UserController {
   @Autowired
   public UserController(UserRepository userRepository) {
     this.userRepository = userRepository;
+  }
+
+  @GetMapping("/homeUser")
+  public String showUserHomeNew(User user) {
+    return "homeUsersNew";
   }
 
   @GetMapping("/signup")
