@@ -1,0 +1,30 @@
+.navbar{ background:#40C74A;}
+
+.nav-link , .navbar-brand{ color: #f4f4f4; cursor: pointer;}
+
+.nav-link{ margin-right: 1em !important;}
+
+.nav-link:hover{ background: #f4f4f4; color: #40C74A; }
+
+.navbar-collapse{ justify-content: flex-end;}
+
+.navbar-toggler{  background:#fff !important;}
+
+/*header style*/
+.header{
+  background-image: url('../img/trees.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  max-width: 100%;
+  padding-right: 0%;
+  padding-left: 0%;
+}
+
+.footer {
+  background:#40C74A;
+}
+

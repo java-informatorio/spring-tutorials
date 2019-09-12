@@ -1,41 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/main_layout}">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Users</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/shards.min.css">
+  <link href="../../static/css/main.css" rel="stylesheet" th:href="@{/css/main.css}" />
+  <!--<link rel="stylesheet" href="../css/shards.min.css">-->
 </head>
 <body>
-<div th:switch="${arbolList}" class="container my-5">
-  <div class="row">
-    <div class="col-md-6">
-      <h2 th:case="null">No hay arboles</h2>
-      <div th:case="*">
-        <h2 class="my-5">Arboles</h2>
-        <table class="table table-striped table-responsive-md">
-          <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="arbol : ${arbolList}">
-            <td th:text="${arbol.nombre}"></td>
-            <td th:text="${arbol.descripcion}"></td>
-            <td><a th:href="@{/edit/{id}(id=${arbol.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-            <td><a th:href="@{/delete/{id}(id=${arbol.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
-          </tr>
-          </tbody>
-        </table>
+<div layout:fragment="content" class="container">
+  <header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="description ">
+        <h1>    Hello ,Welcome To My official Website
+          <p>    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <button class="btn btn-outline-secondary btn-lg">See more</button>   </h1>
       </div>
-      <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
     </div>
-  </div>
+  </header>
+  <!--<div th:switch="${users}" class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 th:case="null">No usuarios yet!</h2>
+        <div th:case="*">
+          <h2 class="my-5">Users</h2>
+          <table class="table table-striped table-responsive-md">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="user : ${users}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td><a th:href="@{/edit/{id}(id=${user.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                <td><a th:href="@{/delete/{id}(id=${user.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
+    </div>
+  </div>-->
 </div>
 </body>
 </html>
