@@ -3,55 +3,34 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/main_layout}">
 <head>
-  <title>Users</title>
-  <link href="../../static/css/main.css" rel="stylesheet" th:href="@{/css/main.css}" />
+  <title>Home</title>
+
   <!--<link rel="stylesheet" href="../css/shards.min.css">-->
 </head>
-<body>
-<div layout:fragment="content" class="container">
-  <header class="header">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="description ">
-        <h1>    Hello ,Welcome To My official Website
-          <p>    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <button class="btn btn-outline-secondary btn-lg">See more</button>   </h1>
+<body data-spy="scroll" data-target="#navbarResponsive">
+  <div layout:fragment="landing" class="landing">
+    <div class="home-wrap">
+      <div class="home-inner">
+
       </div>
     </div>
-  </header>
-  <!--<div th:switch="${users}" class="container my-5">
-    <div class="row">
-      <div class="col-md-6">
-        <h2 th:case="null">No usuarios yet!</h2>
-        <div th:case="*">
-          <h2 class="my-5">Users</h2>
-          <table class="table table-striped table-responsive-md">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr th:each="user : ${users}">
-                <td th:text="${user.name}"></td>
-                <td th:text="${user.email}"></td>
-                <td><a th:href="@{/edit/{id}(id=${user.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                <td><a th:href="@{/delete/{id}(id=${user.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
+  </div>
+  <div layout:fragment="caption" class="caption text-center">
+    <h1>Welcome to Our Info App</h1>
+    <h3>Bootstrap 4 Home View</h3>
+    <a href="#" class="btn btn-outline-light btn-lg">Get Started</a>
+  </div>
+  <div layout:fragment="sections">
+    <div id="whatwedo">
+
     </div>
-  </div>-->
-</div>
+    <div id="team">
+
+    </div>
+    <div id="contact">
+
+    </div>
+
+  </div>
 </body>
 </html>
