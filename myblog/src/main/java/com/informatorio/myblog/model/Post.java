@@ -17,8 +17,6 @@ public class Post {
     @Size(min = 4)
     private String title;
 
-    private Integer cantidad;
-
     public Long getId() {
         return id;
     }
