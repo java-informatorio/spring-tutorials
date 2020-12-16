@@ -1,5 +1,6 @@
 package com.informatorio.myblog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -17,6 +18,11 @@ public class Post {
     @Size(min = 4)
     private String title;
 
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="author", referencedColumnName = "id")
+    private User author;
+
     public Long getId() {
         return id;
     }
@@ -31,5 +37,13 @@ public class Post {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

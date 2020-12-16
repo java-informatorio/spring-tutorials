@@ -1,5 +1,6 @@
 package com.informatorio.myblog.controller;
 
+import com.informatorio.myblog.dto.CommentDTO;
 import com.informatorio.myblog.model.Post;
 import com.informatorio.myblog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class PostController {
 
     //GET Todos los POST
     @GetMapping // ~ /api/v1/post
-    public ResponseEntity<?> getPosts() {
+    public ResponseEntity<?> getPosts(@RequestParam String title) {
+
         return new ResponseEntity<>(postRepository.findAll(), HttpStatus.OK);
     }
 
@@ -31,6 +33,26 @@ public class PostController {
         return new ResponseEntity<>(postRepository.save(post), HttpStatus.CREATED);
     }
 
+    //POST Crear un COMMENT
+    @PostMapping("/{id_post}/comment")
+    public ResponseEntity<?> createComment(@PathVariable Long id_post, @RequestBody CommentDTO commentDTO) {
+        //1 -Buscar el post a comentar
+        //Post post = postRepository.getOne(id_post);
+
+        //2- Buscar autor del comentari
+        // Long autorComentarioId = commentDTO.getIdAutor()
+        // User user = userRepository.getOne(autorComentarioId)
+
+        //3 - Crear Comment y asociar
+        // Comment comment = new Comentario(...
+        // setter
+        // post.agregarComentario(comennt)
+        // user.agregarComentario(comment)
+        //comentarioRepository.save(comment)
+
+        return null;
+    }
+
     //PUT para modificar un POST segun ID
     @PutMapping("/{postId}")
     public ResponseEntity<?> editPost(@PathVariable Long postId, @Valid @RequestBody Post post) {
@@ -38,6 +60,8 @@ public class PostController {
         postEdit.setTitle(post.getTitle());
         return new ResponseEntity<>(postRepository.save(postEdit), HttpStatus.OK);
     }
+
+
 
     //DELETE Borrar un Post segun el ID
     @DeleteMapping("/{postId}")
