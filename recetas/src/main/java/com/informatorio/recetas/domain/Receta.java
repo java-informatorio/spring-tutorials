@@ -1,9 +1,12 @@
 package com.informatorio.recetas.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Receta {
@@ -15,6 +18,9 @@ public class Receta {
     private String description;
     private String tiempoDePreparacion;
     private String tiempoDeCoccion;
+
+    @OneToMany(mappedBy = "receta",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ingrediente> ingredientes;
 
     public Receta() {
     }
@@ -49,6 +55,14 @@ public class Receta {
 
     public void setTiempoDeCoccion(String tiempoDeCoccion) {
         this.tiempoDeCoccion = tiempoDeCoccion;
+    }
+
+    public List<Ingrediente> getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(List<Ingrediente> ingredientes) {
+        this.ingredientes = ingredientes;
     }
 
     @Override
