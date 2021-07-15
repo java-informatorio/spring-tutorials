@@ -6,7 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 
 @Entity
@@ -18,6 +20,10 @@ public class Ingrediente {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Receta receta;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "unidad_id", referencedColumnName = "id")
+    private UnidadDeMedida unidadDeMedida;
 
     private String descripcion;
     private BigDecimal cantidad;
@@ -55,5 +61,13 @@ public class Ingrediente {
 
     public void setReceta(Receta receta) {
         this.receta = receta;
+    }
+
+    public UnidadDeMedida getUnidadDeMedida() {
+        return unidadDeMedida;
+    }
+
+    public void setUnidadDeMedida(UnidadDeMedida unidadDeMedida) {
+        this.unidadDeMedida = unidadDeMedida;
     }
 }
