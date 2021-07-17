@@ -1,7 +1,9 @@
 package com.informatorio.recetas.config;
 
+import com.informatorio.recetas.domain.Categoria;
 import com.informatorio.recetas.domain.Ingrediente;
 import com.informatorio.recetas.domain.Receta;
+import com.informatorio.recetas.domain.UnidadDeMedida;
 import com.informatorio.recetas.repository.IngredienteRepository;
 import com.informatorio.recetas.repository.RecetaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +28,15 @@ public class RecetaRunner implements CommandLineRunner {
         receta.setTiempoDeCoccion("2 horas");
         receta.setTiempoDePreparacion("Poco tiempo");
 
-        Ingrediente ingrediente = new Ingrediente();
-        ingrediente.setDescripcion("Harina");
-        ingrediente.setReceta(receta);
+        //Receta receta = recetaRepository.findById(1L).get();
 
-        receta.setIngredientes(List.of(ingrediente));
+        Categoria categoria1 = new Categoria();
+        categoria1.setNombre("Recetas Faciles");
+        Categoria categoria2 = new Categoria();
+        categoria2.setNombre("Vegetariano");
+
+        receta.agregarCategoria(categoria1);
+        receta.agregarCategoria(categoria2);
 
         receta = recetaRepository.save(receta);
 
