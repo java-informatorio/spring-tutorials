@@ -10,7 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class RecetaRunner implements CommandLineRunner {
@@ -23,23 +28,39 @@ public class RecetaRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Receta receta = new Receta();
-        receta.setDescription("Una buena receta");
-        receta.setTiempoDeCoccion("2 horas");
-        receta.setTiempoDePreparacion("Poco tiempo");
+/*
+        Receta unaReceta = recetaRepository.findById(1L)
+                .orElseThrow(() -> new EntityNotFoundException("No se encontro receta"));
+        //hacer algo
 
-        //Receta receta = recetaRepository.findById(1L).get();
+        if (unaReceta != null) {
+            //hacer algo
+        } else {
+            throw new EntityNotFoundException("No se encontro receta");
+        }
 
-        Categoria categoria1 = new Categoria();
-        categoria1.setNombre("Recetas Faciles");
-        Categoria categoria2 = new Categoria();
-        categoria2.setNombre("Vegetariano");
+        List<Receta> recetas = recetaRepository.findByDescription("Pizza Napolitana");
 
-        receta.agregarCategoria(categoria1);
-        receta.agregarCategoria(categoria2);
+        List<String> nombresRecetas = recetas.stream()
+                .filter(receta1 -> !receta1.getDescription().isEmpty())
+                .map(receta1 -> receta1.getDescription())
+                .collect(Collectors.toList());
 
-        receta = recetaRepository.save(receta);
+        List<String> resultados = new ArrayList<>();
+        for (Receta receta2 : recetas) {
+            if (!receta2.getDescription().isEmpty()) {
+                resultados.add(receta2.getDescription());
+            }
+        }
 
-        System.out.println("HOLA");
+        List<Receta> masRecetas = recetaRepository
+                .findByFechaCreacionBetween(
+                        LocalDate.of(2020, 12,1),
+                        LocalDate.of(2020,12,31));
+
+        Iterable<Receta> todasLasRecetas = recetaRepository.findAll();
+
+
+        System.out.println("HOLA");*/
     }
 }

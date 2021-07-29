@@ -1,5 +1,7 @@
 package com.informatorio.recetas.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,7 @@ public class Categoria {
 
     private String nombre;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "categorias")
     private List<Receta> recetas = new ArrayList<>();
 

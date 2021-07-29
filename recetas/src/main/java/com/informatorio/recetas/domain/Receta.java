@@ -2,6 +2,8 @@ package com.informatorio.recetas.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,11 @@ public class Receta {
     private String description;
     private String tiempoDePreparacion;
     private String tiempoDeCoccion;
+
+    @Enumerated(EnumType.STRING)
+    private Dificultad dificultad;
+
+    private LocalDate fechaCreacion;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Categoria> categorias = new ArrayList<>();
@@ -85,6 +93,14 @@ public class Receta {
     public void agregarCategoria(Categoria categoria) {
         categorias.add(categoria);
         categoria.getRecetas().add(this);
+    }
+
+    public Dificultad getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(Dificultad dificultad) {
+        this.dificultad = dificultad;
     }
 
     @Override
