@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "753275f5-f255-4999-a620-857565920a6c",
+		"name": "ShoppingCart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apellido\": \"James\",\n    \"nombre\": \"Bond\",\n    \"direccion\": \"Calle Siempre Viva 1234\",\n    \"nombreDeUsuario\": \"bond@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrito",
+			"item": [
+				{
+					"name": "Agregar Producto al Carrito",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cantidad\": 8,\n    \"productoId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/6/carrito/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"6",
+								"carrito",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Carrito para un Usuario Dado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"device\": \"mobile\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/6/carrito",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"6",
+								"carrito"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Producto",
+			"item": [
+				{
+					"name": "Crear Producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/producto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"producto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
