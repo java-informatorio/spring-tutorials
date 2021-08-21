@@ -58,6 +58,9 @@ public class CarritoController {
 
     @DeleteMapping("/usuario/{id}/carrito/{idCarrito}/linea/{idLinea}}")
     public ResponseEntity<?> borrarProducto(@PathVariable("id") Long userId,
-                                             @PathVariable("idCarrito") Long idCarrito,
-                                             @Valid @RequestBody OperacionCarrito operacionCarrito) {
+                                            @PathVariable("idCarrito") Long idCarrito,
+                                            @PathVariable("idCarrito") Long idLinea) {
+        //TODO - Agregar logica para remover linea
+        return null;
+    }
 }

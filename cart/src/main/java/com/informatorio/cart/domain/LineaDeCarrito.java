@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+import java.math.BigDecimal;
 
 @Entity
 public class LineaDeCarrito {
@@ -21,6 +23,9 @@ public class LineaDeCarrito {
     Producto producto;
 
     private Integer cantidad;
+
+    @Transient
+    private BigDecimal subtotal;
 
     public Long getId() {
         return id;
@@ -52,5 +57,9 @@ public class LineaDeCarrito {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public BigDecimal getSubtotal() {
+        return producto.getPrecioUnitario().multiply(BigDecimal.valueOf(cantidad));
     }
 }
